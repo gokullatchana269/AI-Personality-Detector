@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Personality Detector</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f6f9;
+}
+
+header{
+background:#6d28d9;
+color:white;
+padding:20px;
+text-align:center;
+font-size:30px;
+font-weight:bold;
+}
+
+.container{
+width:90%;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin-top:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input,textarea,button{
+width:100%;
+padding:12px;
+margin-top:10px;
+font-size:16px;
+}
+
+button{
+background:#6d28d9;
+color:white;
+border:none;
+cursor:pointer;
+border-radius:5px;
+}
+
+button:hover{
+background:#5b21b6;
+}
+
+.result{
+font-size:22px;
+font-weight:bold;
+margin-top:15px;
+color:green;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+🧠 AI Personality Detector
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>👤 Enter Your Details</h2>
+
+<input type="text"
+id="name"
+placeholder="Enter Your Name">
+
+<textarea
+id="about"
+placeholder="Describe yourself in few lines">
+</textarea>
+
+<button onclick="analyzePersonality()">
+Analyze Personality
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>🤖 Personality Result</h2>
+
+<p id="type" class="result"></p>
+
+<p id="confidence"></p>
+
+<p id="leadership"></p>
+
+<p id="communication"></p>
+
+<p id="suggestion"></p>
+
+</div>
+
+</div>
+
+<script>
+
+function analyzePersonality(){
+
+let text =
+document.getElementById("about")
+.value.toLowerCase();
+
+if(text.length < 20){
+
+alert("Please write more about yourself");
+
+return;
+
+}
+
+let personality = "";
+let confidence = "";
+let leadership = "";
+let communication = "";
+let suggestion = "";
+
+// AI LOGIC
+
+if(
+text.includes("team") ||
+text.includes("leader") ||
+text.includes("manage")
+){
+
+personality = "😎 Extrovert Personality";
+
+leadership = "Leadership : 90%";
+
+}
+
+else{
+
+personality = "🧠 Introvert Personality";
+
+leadership = "Leadership : 65%";
+
+}
+
+if(
+text.includes("speak") ||
+text.includes("presentation") ||
+text.includes("communication")
+){
+
+communication = "Communication : 92%";
+
+}
+
+else{
+
+communication = "Communication : 70%";
+
+}
+
+confidence =
+"Confidence Level : " +
+(Math.floor(Math.random()*30)+70)
++ "%";
+
+suggestion =
+"✅ Keep improving skills and confidence.";
+
+// DISPLAY
+
+document.getElementById("type").innerText =
+personality;
+
+document.getElementById("confidence").innerText =
+confidence;
+
+document.getElementById("leadership").innerText =
+leadership;
+
+document.getElementById("communication").innerText =
+communication;
+
+document.getElementById("suggestion").innerText =
+suggestion;
+
+}
+
+</script>
+
+</body>
+</html>
